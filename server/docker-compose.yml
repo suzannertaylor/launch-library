@@ -1,0 +1,25 @@
+version: '3'
+services:
+
+  flaskapp:
+    build: ./web/
+    container_name: appflask
+    ports:
+      - "3001:80"
+    links:
+      - redis:appredis
+    networks:
+      - api-network
+
+  redis:
+    build: ./redisdb/
+    container_name: appredis
+    expose:
+      - "6379"
+    networks:
+      - api-network
+      
+#Docker Networks
+networks:
+  api-network:
+    driver: bridge

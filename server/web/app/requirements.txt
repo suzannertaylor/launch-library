@@ -1,0 +1,2 @@
+flask_cors==3.0.7
+redis==2.10.5
